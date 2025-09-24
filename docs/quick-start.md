@@ -90,7 +90,7 @@ Proper output:
 
 Now one of the features of PyataDB is the ability to find entries based on their specific key.
 
-For example, if we wanted a list of all the stores cell phones, we could search based on item category, if we wanted a specific item, we could search the name in this case because all the product names happen to be unique, however this is not always the case. For that purpose we also store the items SKU (Stock Keeping Unit), which will be unique for every item in a store.
+For example, if we wanted a list of all the stores cell phones, we could filter based on item category, if we wanted a specific item, we could filter by name because all the product names happen to be unique, however this is not always the case. For that purpose we also store the items SKU (Stock Keeping Unit), which will be unique for every item in a store.
 
 We can also filter more than one given criteria, for example if we wanted to find all $30 items within the 'Pheripherals' category, we can do that:
 ```python
