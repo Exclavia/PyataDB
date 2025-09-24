@@ -1,4 +1,4 @@
-import Pyatabase as Pyata
+import PyataDB as Pyata
 
 _DBFILE = 'databases/example_db.db' ## Path to database file
 
