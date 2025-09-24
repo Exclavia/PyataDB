@@ -1,5 +1,5 @@
-import sys
-sys.path.append('../')
+import __sys__
+__sys__.path.append('../')
 import PyataDB as Pyata
 
 ### Path to database file
