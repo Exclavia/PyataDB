@@ -1,10 +1,10 @@
-# PyataDB: A Lightweight Python Database 💾
+# 💾 PyataDB: A Lightweight Python Database
 
 PyataDB is a **lightweight**, **easy-to-use**, and **efficient** database built entirely in Python. It's designed for small to medium-sized projects where a full-fledged database system like PostgreSQL or MySQL might be overkill. PyataDB allows you to store and retrieve data easily with only a few lines of code.
 
 ---
 
-## Features ✨
+## ✨ Features
 
 * **No external dependencies:** SimpleDB is built with standard Python libraries, so you don't need to install anything extra.
 * **Makes use of Python's Pickle module:** Stores data into a serialized binary formatted file. This makes it easy to store and load, as well as making it easy to pull stored data just using standard Python library.
@@ -12,7 +12,7 @@ PyataDB is a **lightweight**, **easy-to-use**, and **efficient** database built 
 
 ---
 
-## Usage 🧑‍💻
+## 🧑‍💻 Usage
 
 The module is fairly small, making it easy to extend yourself if you wish. This snippet should get you started:
 
@@ -50,3 +50,4 @@ db.save('path/to/database.db')
 # Load database from file
 db.load('path/to/database.db')
 ```
+
