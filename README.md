@@ -21,7 +21,7 @@ import PyataDB as Pyata
 
 ## RECOMMENDED ##
 # Declare Datbase & Table objects for
-# easier type declaration and to enable type hints:
+# easier type declaration and to enable type hints
 # (IE: new_table: Table = ...)
 Database, Table = Pyata.Pydb, Pyata.PyTable
 
