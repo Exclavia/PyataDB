@@ -1,2 +1,48 @@
-# PyataBase
-Python based lightweight and easy to use database. 
+# PyataDB: A Lightweight Python Database 💾
+
+PyataDB is a **lightweight**, **easy-to-use**, and **efficient** database built entirely in Python. It's designed for small to medium-sized projects where a full-fledged database system like PostgreSQL or MySQL might be overkill. PyataDB allows you to store and retrieve data easily with only a few lines of code.
+
+---
+
+## Features ✨
+
+* **No external dependencies:** SimpleDB is built with standard Python libraries, so you don't need to install anything extra.
+* **Makes use of Python's Pickle module:** Stores data into a serialized binary formatted file. This makes it easy to store and load, as well as making it easy to pull stored data just using standard Python library.
+* **Efficient for small datasets:** It's optimized for performance on smaller data sets. It's essentially just an overglorified/extended dictionary type.
+
+---
+
+## Usage 🧑‍💻
+
+The module is fairly small, making it easy to extend yourself if you wish. This snippet should get you started:
+
+```python
+import Pyatabase as Pyata
+
+## RECOMMENDED: Declare and ser Datbase & Table objects for easier type declaration and enabled type hints. (IE: new_table: Table = ...)
+Database, Table = Pyata.Pydb, Pyata.PyTable
+
+# Initialize new database
+db: Database = Pyata.Pydb()
+
+# Create and return a new table in database
+new_table: Table = db.table('new_table')
+
+# Insert key value pairs into table example:
+new_table.insert(user_id=1, name='John', email='john@example.com)
+
+# Return list of tables within database
+tables_list = db.tables
+
+# Return entry from table based on key value
+user_1 = new_table.find(user_id=1)
+
+# Returns all rows in the table as a list of dicts
+get_all = new_table.get_all()
+
+# Save database to file
+db.save('path/to/database.db')
+
+# Load database from file
+db.load('path/to/database.db)
+```
