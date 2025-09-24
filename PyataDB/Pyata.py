@@ -1,5 +1,5 @@
-from collections import defaultdict as __x_dict__
-import pickle as __x_pkl__
+from collections import defaultdict as __defdict__
+import pickle as __pickle__
 
 __all__ = ['Pydb', 'PyTable']
 
@@ -9,7 +9,7 @@ class PyTable:
     """A class that represents a single table in the database."""
     def __init__(self, name):
         self.name = name
-        self._data = __x_dict__(list)
+        self._data = __defdict__(list)
         self._rows = 0
     def __str__(self): return f"Table(name='{self.name}', columns={list(self._data.keys())}, rows={self._rows})"
     def __repr__(self): return self.__str__()
@@ -85,14 +85,14 @@ class Pydb:
     def save(self, filename, verbose=False):
         """Saves database to file -> Bytes"""
         with open(filename, 'wb') as f:
-            __x_pkl__.dump(self._tables, f)
+            __pickle__.dump(self._tables, f)
         if verbose: print(f"Database saved to : '{filename}'\n")
 
 
     def load(self, filename, verbose=False):
         """Loads database from file."""
         with open(filename, 'rb') as f:
-            self._tables = __x_pkl__.load(f)
+            self._tables = __pickle__.load(f)
         if verbose: print(f"Database loaded from : '{filename}'\n")
 
     @property
