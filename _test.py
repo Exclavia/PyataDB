@@ -38,7 +38,6 @@ if __name__ == "__main__":
   i = _get_length(users)
   next_i = _incr_id(i)
   i = _add(users, next_i, _name='Name', _email='mail@example.com', _status='active')
-  
   ## Iterate through and print [Key:Values]
   for x in range(0, i):
   	n = x + 1
@@ -50,9 +49,9 @@ if __name__ == "__main__":
   ##-// Return list of tables within database //-##
   #print(f"Current tables: {db.tables}")
 
-	##-// Find all 'active' users //-##
+  ##-// Find all 'active' users //-##
   #active_users = user_table.find(status='active')
   #print(f"\nActive users: {active_users}")
 
-	##-// Verify loaded data //-##
+  ##-// Verify loaded data //-##
   #print(f"Users from loaded DB: {user_table.get_all()}")
