@@ -1,6 +1,6 @@
-import os
-import sys
-sys.path.append('../')
+import os as __os__
+import sys as __sys__
+__sys__.path.append('../')
 import PyataDB as Pyata
 
 
@@ -38,7 +38,7 @@ if __name__ == "__main__":
   # if so, the following table insertions won't run.
   # If something messed up, just delete the database file, and try again, then they should run.
 
-  if not os.path.exists(db_file):
+  if not __os__.path.exists(db_file):
   	products.insert(item_sku=1020, name='Computer Mouse', category='Peripherals', price='$25')
   	products.insert(item_sku=1040, name='Computer Keyboard', category='Peripherals', price='$30')
   	products.insert(item_sku=1060, name='Computer Monitor', category='Peripherals', price='$100')
