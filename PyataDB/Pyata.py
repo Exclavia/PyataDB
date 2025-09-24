@@ -23,7 +23,7 @@ class PyTable:
 		# Ensure all existing columns are accounted for in the new entry
         for key in self._data.keys(): if key not in kwargs: kwargs[key] = None
         for key, value in kwargs.items():  #  Add new columns if they don't exist
-			# Pad new column with None for existing rows
+# Pad new column with None for existing rows
             if key not in self._data: self._data[key] = [None] * self._rows
             self._data[key].append(value)
         self._rows += 1
