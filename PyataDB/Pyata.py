@@ -20,7 +20,7 @@ class PyTable:
     def insert(self, **kwargs):
         """Inserts a new row of data into the table. 
         Example: table.insert(id=1, name='John', age=30)"""
-		# Ensure all existing columns are accounted for in the new entry
+# Ensure all existing columns are accounted for in the new entry
         for key in self._data.keys(): if key not in kwargs: kwargs[key] = None
         for key, value in kwargs.items():  #  Add new columns if they don't exist
             # Pad new column with None for existing rows
