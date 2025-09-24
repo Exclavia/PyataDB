@@ -38,7 +38,7 @@ For now we will just do some common product/item data found in stores:
 > I personally would not recommend using PyataDB for storing heavily and frequntly accessed data. It has yet to be tested, and it's whole purpose was to be small, lightweight, able to be embedded, and fairly easy to use.
 
 
-Let's go ahead and add some products using the fields (keys) we specificed above. Beforehand, you will notice I have an ```python if not os.path.exists``` statement to check for whether or not the database file for this guide/example was alreadt created and to skip data insertion if that's the case. If your database file doesn't seem to work, seems empty or is corrupted, just go ahead and delete it and run the example again, and it should insert and recreate the database save.
+Let's go ahead and add some products using the fields (keys) we specificed above. Beforehand, you will notice I have an ```if not os.path.exists``` statement to check for whether or not the database file for this guide/example was alreadt created and to skip data insertion if that's the case. If your database file doesn't seem to work, seems empty or is corrupted, just go ahead and delete it and run the example again, and it should insert and recreate the database save.
 ```python
 if not __os__.path.exists(db_file):
 ### Key=Value order when adding does not matter
