@@ -1,3 +1,8 @@
+"""
+Main PyataDB module
+  Pydb: Database Class
+  PyTable: Table Class
+"""
 from collections import defaultdict as __defdict__
 import pickle as __pickle__
 
