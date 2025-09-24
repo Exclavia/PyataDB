@@ -32,13 +32,14 @@ db: Database = Pyata.Pydb()
 new_table: Table = db.table('new_table')
 
 # Insert key value pairs into table example:
-new_table.insert(user_id=1, name='John', email='john@example.com)
+new_table.insert(user_id=1, name='John', email='john@example.com')
 
 # Return list of tables within database
 tables_list = db.tables
 
 # Return entry from table based on key value
-user_1 = new_table.find(user_id=1)
+find_from_id = new_table.find(user_id=1)
+find_from_name = new_table.find(name='John')
 
 # Returns all rows in the table as a list of dicts
 get_all = new_table.get_all()
