@@ -1,11 +1,11 @@
 from collections import defaultdict as __x_dict__
 import pickle as __x_pkl__
 
-__all__ = ['database', 'table']
+__all__ = ['Pydb', 'PyTable']
 
 
 ##-//  Table Class  //-##
-class table:
+class PyTable:
     """A class that represents a single table in the database."""
     def __init__(self, name):
         self.name = name
@@ -61,13 +61,13 @@ class table:
 
 
 ##-//  Database Class  //-##
-class database:
+class Pydb:
     def __init__(self):
     	self._tables = {}
     def __getitem__(self, key): return self._tables.get(key)
 
     def __setitem__(self, key, value):
-        if not isinstance(value, table):
+        if not isinstance(value, PyTable):
             raise TypeError("Value must be a Table instance.")
         if key != value.name:
             raise ValueError("Table name must match the key.")
@@ -78,7 +78,7 @@ class database:
     def table(self, name):
         """Creates and returns a new table, or returns an existing one."""
         if name not in self._tables:
-            self._tables[name] = table(name)
+            self._tables[name] = PyTable(name)
         return self._tables[name]
 
 
