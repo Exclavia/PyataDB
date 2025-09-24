@@ -6,7 +6,7 @@ PyataDB is a **lightweight**, **easy-to-use**, and **efficient** database built 
 
 ## ✨ Features
 
-* **No external dependencies:** SimpleDB is built with standard Python libraries, so you don't need to install anything extra.
+* **No external dependencies:** PyataDB is built with standard Python libraries, so you don't need to install anything extra.
 * **Makes use of Python's Pickle module:** Stores data into a serialized binary formatted file. This makes it easy to store and load, as well as making it easy to pull stored data just using standard Python library.
 * **Efficient for small datasets:** It's optimized for performance on smaller data sets. It's essentially just an overglorified/extended dictionary type.
 
