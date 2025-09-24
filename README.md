@@ -20,7 +20,8 @@ The module is fairly small, making it easy to extend yourself if you wish. This 
 import PyataDB as Pyata
 
 ## RECOMMENDED ##
-# Declare Datbase & Table objects for easier type declaration and to enable type hints. (IE: new_table: Table = ...)
+# Declare Datbase & Table objects for
+# easier type declaration and to enable type hints. (IE: new_table: Table = ...)
 Database, Table = Pyata.Pydb, Pyata.PyTable
 
 # Initialize new database
