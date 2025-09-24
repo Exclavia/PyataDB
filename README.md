@@ -17,7 +17,7 @@ PyataDB is a **lightweight**, **easy-to-use**, and **efficient** database built 
 The module is fairly small, making it easy to extend yourself if you wish. This snippet should get you started:
 
 ```python
-import Pyatabase as Pyata
+import PyataDB as Pyata
 
 ## RECOMMENDED: Declare and ser Datbase & Table objects for easier type declaration and enabled type hints. (IE: new_table: Table = ...)
 Database, Table = Pyata.Pydb, Pyata.PyTable
