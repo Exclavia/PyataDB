@@ -47,5 +47,5 @@ get_all = new_table.get_all()
 db.save('path/to/database.db')
 
 # Load database from file
-db.load('path/to/database.db)
+db.load('path/to/database.db')
 ```
