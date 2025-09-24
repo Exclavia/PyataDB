@@ -9,7 +9,8 @@ class PyTable:
         self.name = name
         self._data = __defdict__(list)
         self._rows = 0
-    def __str__(self): return f"Table(name='{self.name}', columns={list(self._data.keys())}, rows={self._rows})"
+    def __str__(self):
+return f"Table(name='{self.name}', columns={list(self._data.keys())}, rows={self._rows})"
     def __repr__(self): return self.__str__()
     def __len__(self): return self._rows
     def _get_row(self, index):
