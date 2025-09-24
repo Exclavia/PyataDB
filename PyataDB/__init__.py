@@ -6,6 +6,9 @@ https://github.com/Exclavia/PyataDB
 # std
 import sys
 import platform
+from collections import defaultdict as __defdict__
+import pickle as __pickle__
+
 
 # pyata module
 from .Pyata import *
