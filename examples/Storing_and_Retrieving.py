@@ -25,7 +25,6 @@ if __name__ == "__main__":
   # Since PyataDB supports dynamic table fields,
   # if we happen to forget to add a field we wanted to store,
   # it can be added to the table later.
-
   # For now we will just do some common product/item data found in stores:
   # - item_sku (Essentially a unique ID)
   # - item_name
@@ -63,7 +62,6 @@ if __name__ == "__main__":
   # when set to True it just prints out a confirmation method confirming the Database[Table(s)] have been saved, and where to.
   # Once the file has been created and saved, you can actually remove all of the previous code were we added the items,
   # however I would recommend first loading and checking the file first. Which we will do now:
-
   db.load(filename=db_file, verbose=True)
 
   # Also by loading the file despite just creating/saving it means when we call table methods for retrieving the data,
@@ -77,44 +75,44 @@ if __name__ == "__main__":
   # >>> Database saved to : 'store_retrieve_example.db'
   # >>> Database loaded from : 'store_retrieve_example.db'
   # >>> [{'item_sku': 1020, 'name': 'Computer Mouse', 'category': 'Peripherals', 'price': '$25'},
-  #      {'item_sku': 1040, 'name': 'Computer Keyboard', 'category': 'Peripherals', 'price': '$30'}...
+  # |>> {'item_sku': 1040, 'name': 'Computer Keyboard', 'category': 'Peripherals', 'price': '$30'}...
   ### ** I cut off the third one to save space.
 
-  # Now one of the features of PyataDB is the ability to find entries based on their specific key. For example, if we wanted a list of all the stores cell phones,we could search based on item category, if we wanted a specific item, we could search the name in this case because all the product names happen to be unique, however this is not always the case.
+  # Now one of the features of PyataDB is the ability to find entries based on their specific key. For example, if we wanted a list of all the stores cell phones,
+  # we could search based on item category, if we wanted a specific item, we could search the name in this case because all the product names happen to be unique,
+  # however this is not always the case.
   # For that purpose we also store the items SKU (Stock Keeping Unit), which will be unique for every item in a store.
   # We can also filter more than one given criteria, for example if we wanted to find all $30 items within the 'Pheripherals' category, we can do that:
+  
   products: Table = db['products'] # Since we reloaded the database from the file, we have to re-declare our products variable, otherwise it will come back blank.
-
   filter_items = products.find(category='Peripherals', price='$30')
-
   print(filter_items)
 
   # Two items should've came back based on the categories and prices we set earlier: Category = Peripherals, Price = $30, which should be the 'Computer Keyboard' and 'Gaming Headset'
   # The .find() method works for any of the table fields.
-  # If you happened to check the type() of the returned items, or just noticed it based on what was printed, the data is returned as a list, so we should be able to easily iterate through it and separate out individual values.
+  # If you happened to check the type() of the returned items, or just noticed it based on what was printed, the data is returned as a list,
+  #  so we should be able to easily iterate through it and separate out individual values.
 
   for item in filter_items:
   	_sku = item['item_sku']
   	_name = item['name']
   	_cat = item['category']
   	_price = item['price']
+  	print(f"Item SKU: {_sku}\nItem: {_name}")
+  	print(f"Category: {_cat}\nPrice: {_price}")
 
-  	print(f"Item SKU: {_sku}")
-  	print(f"Item: {_name}")
-  	print(f"Category: {_cat}")
-  	print(f"Price: {_price}")
-  	print('')
-
-  	#   Database loaded from : 'store_retrieve_example.db'
-
+      #
+  	  #   Database loaded from : 'store_retrieve_example.db'
+      #
 	  #   Item SKU: 1040
 	  #   Item: Computer Keyboard
 	  #   Category: Peripherals
 	  #   Price: $30
-
-  	#   Item SKU: 1080
-  	#   Item: Gaming Headset
+      #
+  	  #   Item SKU: 1080
+      #   Item: Gaming Headset
 	  #   Category: Peripherals
 	  #   Price: $30
-
+      #
 	  #   [Program finished]
+      #
