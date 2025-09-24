@@ -4,12 +4,12 @@ __sys__.path.append('../')
 import PyataDB as Pyata
 
 
-# This example shows the user how to easily store data for later loading,
+# This example/guide shows the user how to easily store data for later loading,
 # as well as how to easily retrieve the data and parse it.
 # First let's initialize a new database, and create a new table. 
 # For the example we will be storing products/items for a store.
 # We will also be saving our database in the current working directory:
-db_file = 'store_retrieve_example.db'
+db_file = 'quickstart_example.db'
 
 # For Type delcaration / Type hints
 # This is recommended, but not required.
