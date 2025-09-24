@@ -3,7 +3,6 @@ import sys as __sys__
 __sys__.path.append('../')
 import PyataDB as Pyata
 
-
 # This example/guide shows the user how to easily store data for later loading,
 # as well as how to easily retrieve the data and parse it.
 # First let's initialize a new database, and create a new table. 
