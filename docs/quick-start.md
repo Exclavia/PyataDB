@@ -67,33 +67,41 @@ Once the file has been created and saved, you can actually remove all of the pre
   db.load(filename=db_file, verbose=True)
 ```
 When loading/reloading the database from file, you will have to re-declare the set Table variable (products) because the newest 'data' the db object has is whatever is loaded.
-  # Lets quickly verify our loaded data using:
+
+```python
+  products: Table = db['products']
+```
+
+While we are here, let's check our data is correct using the Table class .get_all() method
+```python
   print(products.get_all())
+```
+Proper output:
+```
+>>> Database saved to : 'store_retrieve_example.db'
+>>> Database loaded from : 'store_retrieve_example.db'
+>>> [{'item_sku': 1020, 'name': 'Computer Mouse',
+  |-> 'category': 'Peripherals', 'price': '$25'},
+  |-> {'item_sku': 1040, 'name': 'Computer Keyboard',
+  |-> 'category': 'Peripherals', 'price': '$30'}...*
+```
+* I cut off the third one to save space.
 
-  # If everything was done as shown above, you should be presented with three print messages.
-  # One from saving the file, one from loading, and one showing all of the data inside the table we just created:
+Now one of the features of PyataDB is the ability to find entries based on their specific key.
 
-  # >>> Database saved to : 'store_retrieve_example.db'
-  # >>> Database loaded from : 'store_retrieve_example.db'
-  # >>> [{'item_sku': 1020, 'name': 'Computer Mouse', 'category': 'Peripherals', 'price': '$25'},
-  # |>> {'item_sku': 1040, 'name': 'Computer Keyboard', 'category': 'Peripherals', 'price': '$30'}...
-  ### ** I cut off the third one to save space.
+For example, if we wanted a list of all the stores cell phones, we could search based on item category, if we wanted a specific item, we could search the name in this case because all the product names happen to be unique, however this is not always the case. For that purpose we also store the items SKU (Stock Keeping Unit), which will be unique for every item in a store.
 
-  # Now one of the features of PyataDB is the ability to find entries based on their specific key. For example, if we wanted a list of all the stores cell phones,
-  # we could search based on item category, if we wanted a specific item, we could search the name in this case because all the product names happen to be unique,
-  # however this is not always the case.
-  # For that purpose we also store the items SKU (Stock Keeping Unit), which will be unique for every item in a store.
-  # We can also filter more than one given criteria, for example if we wanted to find all $30 items within the 'Pheripherals' category, we can do that:
-  
-  products: Table = db['products'] # Since we reloaded the database from the file, we have to re-declare our products variable, otherwise it will come back blank.
-  filter_items = products.find(category='Peripherals', price='$30')
-  print(filter_items)
+We can also filter more than one given criteria, for example if we wanted to find all $30 items within the 'Pheripherals' category, we can do that:
+```python
+filter_items = products.find(category='Peripherals', price='$30')
+print(filter_items)
+```
 
-  # Two items should've came back based on the categories and prices we set earlier: Category = Peripherals, Price = $30, which should be the 'Computer Keyboard' and 'Gaming Headset'
-  # The .find() method works for any of the table fields.
-  # If you happened to check the type() of the returned items, or just noticed it based on what was printed, the data is returned as a list,
-  #  so we should be able to easily iterate through it and separate out individual values.
+Two items should've came back based on the categories and prices we set earlier: Category = Peripherals, Price = $30, which should be the 'Computer Keyboard' and 'Gaming Headset'
 
+The .find() method works for any of the table fields. If you happened to check the type() of the returned items, or just noticed it based on what was printed, the data is returned as a list, so we should be able to easily iterate through it and separate out individual values.
+
+```python
   for item in filter_items:
   	_sku = item['item_sku']
   	_name = item['name']
@@ -101,20 +109,21 @@ When loading/reloading the database from file, you will have to re-declare the s
   	_price = item['price']
   	print(f"Item SKU: {_sku}\nItem: {_name}")
   	print(f"Category: {_cat}\nPrice: {_price}")
+```
 
-      #
-  	  #   Database loaded from : 'store_retrieve_example.db'
-      #
-	  #   Item SKU: 1040
-	  #   Item: Computer Keyboard
-	  #   Category: Peripherals
-	  #   Price: $30
-      #
-  	  #   Item SKU: 1080
-      #   Item: Gaming Headset
-	  #   Category: Peripherals
-	  #   Price: $30
-      #
-	  #   [Program finished]
-      #
+Expected/Correct output:
+```
+>>> Database loaded from : 'store_retrieve_example.db'
+
+>>> Item SKU: 1040
+>>> Item: Computer Keyboard
+>>> Category: Peripherals
+>>> Price: $30
+
+>>> Item SKU: 1080
+>>> Item: Gaming Headset
+>>> Category: Peripherals
+>>> Price: $30
+
+[Program finished]
 ```
