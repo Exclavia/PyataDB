@@ -1,9 +1,9 @@
-import Pydb
+import Pyatabase as Pyata
 
 _DBFILE = 'databases/example_db.db' ## Path to database file
 
 # Set database, table -> Datbase & Table objects for type declaration
-Database, Table = Pydb.database, Pydb.table
+Database, Table = Pyata.Pydb, Pyata.PyTable
 
 ##-// Creates new table
 def _new_table(_db: Database, tb_name: str) -> Table: return _db.table(tb_name)
@@ -15,13 +15,13 @@ def _get_length(_table: Table) -> int: return len(_table)
 def _incr_id(prev_id: int) -> int: return prev_id + 1
 
 ##-// Temporary quick-add function for new table entries //-##
-def _add(_table: Table, next_id: int, _name: str, _email: str, _status: str) -> int:
+def _add(_db: Database, _table: Table, next_id: int, _name: str, _email: str, _status: str) -> int:
 	_table.insert(user_id=next_id, name=_name,
 	              email=_email, status=_status)
 	print(f"New entry added to '{_table}'\nSaving to file.")
-	db.save(_DBFILE)
+	_db.save(_DBFILE)
 	print("Reloading database...")
-	db.load(_DBFILE, True)
+	_db.load(_DBFILE, True)
 	_id = next_id
 	return _id
 
@@ -32,12 +32,12 @@ def _find_from_id(_table: Table, _id: int) -> Table: return _table.find(user_id=
 def _find_from_id(_table: Table, _name: str) -> Table: return _table.find(name=_name)
 
 if __name__ == "__main__":
-  db: Database = Pydb.database()
-  db.load(db_file)
-  user_table: Table = db['users']
+  db: Database = Pyata.Pydb()
+  db.load(_DBFILE)
+  users: Table = db['users']
   i = _get_length(users)
   next_i = _incr_id(i)
-  i = _add(users, next_i, _name='Name', _email='mail@example.com', _status='active')
+  i = _add(db, users, next_i, _name='Name', _email='mail@example.com', _status='active')
   ## Iterate through and print [Key:Values]
   for x in range(0, i):
   	n = x + 1
