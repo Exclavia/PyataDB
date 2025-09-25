@@ -1,12 +1,12 @@
 import __sys__
 __sys__.path.append('../')
-import PyataDB as Pyata
+import PynexDB as Pynex
 
 ### Path to database file
 _DBFILE = 'databases/example_db.db'
 
 ### Set database, table -> Datbase & Table objects for type declaration
-Database, Table = Pyata.Pydb, Pyata.PyTable
+Database, Table = Pynex.PyDb, Pynex.PyTb
 
 ### Creates new table
 def _new_table(_db: Database, tb_name: str) -> Table: return _db.table(tb_name)
@@ -30,7 +30,7 @@ def _find_from_id(_table: Table, _id: int) -> Table: return _table.find(user_id=
 def _find_from_id(_table: Table, _name: str) -> Table: return _table.find(name=_name)
 
 if __name__ == "__main__":
-  db: Database = Pyata.Pydb()
+  db: Database = Pynex.PyDb()
   db.load(_DBFILE)
   users: Table = db['users']
   i = _get_length(users)
