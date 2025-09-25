@@ -11,6 +11,12 @@ PynexDB is a **lightweight**, **easy-to-use**, and **efficient** database built 
 * **Efficient for small datasets:** It's optimized for performance on smaller data sets. It's essentially just an overglorified/extended dictionary type.
 
 
+## Installation
+
+```
+pip install https://github.com/Exclavia/PynexDB/releases/download/Alpha/pynexdb-0.1.4-py3-none-any.whl
+```
+
 
 ## Usage
 
