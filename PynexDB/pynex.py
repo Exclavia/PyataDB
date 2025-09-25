@@ -1,5 +1,5 @@
 """
-Main PyataDB module
+Main PynexDB module
   Pydb: Database Class
   PyTable: Table Class
 """
