@@ -1,7 +1,7 @@
 import os as __os__
 import sys as __sys__
 __sys__.path.append('../')
-import PyataDB as Pyata
+import PynexDB.Pynex as Pynex
 
 # This example/guide shows the user how to easily store data for later loading,
 # as well as how to easily retrieve the data and parse it.
@@ -12,16 +12,16 @@ db_file = 'quickstart_example.db'
 
 # For Type delcaration / Type hints
 # This is recommended, but not required.
-Database, Table = Pyata.Pydb, Pyata.PyTable
+Database, Table = Pynex.PyDb, Pynex.PyTb
 
 if __name__ == "__main__":
   # Initialize database -> db
-  db:Database = Pyata.Pydb()
+  db:Database = Pynex.PyDb()
 
   # Create new table named 'products' -> products
   products:Table = db.table('products')
 
-  # Since PyataDB supports dynamic table fields,
+  # Since PynexDB supports dynamic table fields,
   # if we happen to forget to add a field we wanted to store,
   # it can be added to the table later.
   # For now we will just do some common product/item data found in stores:
@@ -30,8 +30,8 @@ if __name__ == "__main__":
   # - item_category
   # - item_price
 
-  # I personally would not recommend using PyataDB for storing something like the item_amount_in_stock,
-  # PyataDB hasn't been tested on commonly heavily accessed values that frequently change.
+  # I personally would not recommend using PynexDB for storing something like the item_amount_in_stock,
+  # PynexDB hasn't been tested on commonly heavily accessed values that frequently change.
   # So we will just be storing information about the products.
   # If statement checks to see if database file was alreadt created and saved,
   # if so, the following table insertions won't run.
@@ -77,7 +77,7 @@ if __name__ == "__main__":
   # |>> {'item_sku': 1040, 'name': 'Computer Keyboard', 'category': 'Peripherals', 'price': '$30'}...
   ### ** I cut off the third one to save space.
 
-  # Now one of the features of PyataDB is the ability to find entries based on their specific key. For example, if we wanted a list of all the stores cell phones,
+  # Now one of the features of PynexDB is the ability to find entries based on their specific key. For example, if we wanted a list of all the stores cell phones,
   # we could search based on item category, if we wanted a specific item, we could search the name in this case because all the product names happen to be unique,
   # however this is not always the case.
   # For that purpose we also store the items SKU (Stock Keeping Unit), which will be unique for every item in a store.
