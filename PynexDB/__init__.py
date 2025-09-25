@@ -1,5 +1,5 @@
 """
-PynexDB is a lightweight, easy-to-use, and efficient database built entirely in Python.
+A lightweight and easy-to-use database written in Python
 
 https://github.com/Exclavia/PynexDB
 """
