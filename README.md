@@ -1,12 +1,12 @@
-# PyataDB: A Lightweight Python Database 
+# PynexDB: A Lightweight Python Database 
 
-PyataDB is a **lightweight**, **easy-to-use**, and **efficient** database built entirely in Python. It's designed for small to medium-sized projects where a full-fledged database system like PostgreSQL or MySQL might be overkill. PyataDB allows you to store and retrieve data easily with only a few lines of code.
+PynexDB is a **lightweight**, **easy-to-use**, and **efficient** database built entirely in Python. It's designed for small to medium-sized projects where a full-fledged database system like PostgreSQL or MySQL might be overkill. PynexDB allows you to store and retrieve data easily with only a few lines of code.
 
 ---
 
 ## Features
 
-* **No external dependencies:** PyataDB is built with standard Python libraries, so you don't need to install anything extra.
+* **No external dependencies:** PynexDB is built with standard Python libraries, so you don't need to install anything extra.
 * **Makes use of Python's Pickle module:** Stores data into a serialized binary formatted file. This makes it easy to store and load, as well as making it easy to pull stored data just using standard Python library.
 * **Efficient for small datasets:** It's optimized for performance on smaller data sets. It's essentially just an overglorified/extended dictionary type.
 
@@ -19,13 +19,13 @@ PyataDB is a **lightweight**, **easy-to-use**, and **efficient** database built 
 The module is fairly small, making it easy to extend yourself if you wish. This snippet should get you started:
 
 ```python
-import PyataDB as Pyata
+import PynexDB.Pynex as Pynex
 
 ## RECOMMENDED ##
 # Declare Database & Table objects for
 # easier type declaration and to enable type hints
 # (IE: new_table: Table = ...)
-Database, Table = Pyata.Pydb, Pyata.PyTable
+Database, Table = Pynex.PyDb, Pynex.PyTb
 
 # Initialize new database
 db: Database = Pyata.Pydb()
