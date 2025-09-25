@@ -1,5 +1,5 @@
 """
-PyataDB is a lightweight, easy-to-use, and efficient database built entirely in Python.
+PynexDB is a lightweight, easy-to-use, and efficient database built entirely in Python.
 
 https://github.com/Exclavia/PyataDB
 """
@@ -10,8 +10,8 @@ from collections import defaultdict as __defdict__
 import pickle as __pickle__
 
 # pyata module
-from .Pyata import *
+from .pynex import *
 
 
 __all__ = ('Pydb', 'PyTable',)
-__version__ = "0.0.3"
+__version__ = "0.0.4"
