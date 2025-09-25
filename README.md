@@ -2,7 +2,7 @@
 
 PynexDB is a **lightweight**, **easy-to-use**, and **efficient** database built entirely in Python. It's designed for small to medium-sized projects where a full-fledged database system like PostgreSQL or MySQL might be overkill. PynexDB allows you to store and retrieve data easily with only a few lines of code.
 
----
+
 
 ## Features
 
@@ -10,7 +10,7 @@ PynexDB is a **lightweight**, **easy-to-use**, and **efficient** database built 
 * **Makes use of Python's Pickle module:** Stores data into a serialized binary formatted file. This makes it easy to store and load, as well as making it easy to pull stored data just using standard Python library.
 * **Efficient for small datasets:** It's optimized for performance on smaller data sets. It's essentially just an overglorified/extended dictionary type.
 
----
+
 
 ## Usage
 
