@@ -9,7 +9,7 @@ import sys as __sys__
 from collections import defaultdict as __defdict__
 import pickle as __pickle__
 
-# pyata module
+# pynex module
 from .pynex import *
 
 
