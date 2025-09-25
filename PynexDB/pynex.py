@@ -1,24 +1,32 @@
 """
 Main PynexDB module
   Pydb: Database Class
-  PyTable: Table Class
+  PyTb: Table Class
 """
 from collections import defaultdict as __defdict__
 import pickle as __pickle__
 
-__all__ = ['Pydb', 'PyTable']
+__all__ = ['PyDb', 'PyTb']
 
-class PyTable:
-    """Database.Table Object class. Takes name as arguement."""
+class PyTb:
+    """ PyDb.PyTb database table object class
+    Takes name as arguement -> PyTb(name='tablename') """
     def __init__(self, name):
         self.name = name
         self._data = __defdict__(list)
         self._rows = 0
-    def __str__(self): return f"Table(name='{self.name}', columns={list(self._data.keys())}, rows={self._rows})"
-    def __repr__(self): return self.__str__()
-    def __len__(self): return self._rows
+
+    def __str__(self):
+        return f"Table(name='{self.name}', columns={list(self._data.keys())}, rows={self._rows})"
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __len__(self):
+        return self._rows
+
     def _get_row(self, index):
-        """Returns a single row as dict."""
+        """ Returns a single row as dict """
         if index >= self._rows: raise IndexError("Row index out of range.")
         return {key: self._data[key][index] for key in self._data}
 
@@ -26,10 +34,12 @@ class PyTable:
         """Inserts a new row of data into the table. 
         Example: table.insert(id=1, name='John', age=30)"""
         # Ensure all existing columns are accounted for in the new entry
-        for key in self._data.keys(): if key not in kwargs: kwargs[key] = None
-        for key, value in kwargs.items():  #  Add new columns if they don't exist
-            # Pad new column with None for existing rows
-            if key not in self._data: self._data[key] = [None] * self._rows
+        for key in self._data.keys():
+            if key not in kwargs: kwargs[key] = None
+        for key, value in kwargs.items():  # Add new columns if they don't exist
+            if key not in self._data:
+                # Pad new column with None for existing rows
+                self._data[key] = [None] * self._rows
             self._data[key].append(value)
         self._rows += 1
         return self._rows - 1
@@ -57,19 +67,25 @@ class PyTable:
         return [self._get_row(i) for i in range(self._rows)]
 
 
-class Pydb:
-	'''Main Database object class.'''
-    def __init__(self): self._tables = {}
-    def __getitem__(self, key): return self._tables.get(key)
+class PyDb:
+    """ Main PyDb() database object class """
+    def __init__(self):
+        self._tables = {}
+
+    def __getitem__(self, key):
+        return self._tables.get(key)
+
     def __setitem__(self, key, value):
-        if not isinstance(value, PyTable): raise TypeError("Value must be a Table instance.")
+        if not isinstance(value, PyTb): raise TypeError("Value must be a Table instance.")
         if key != value.name: raise ValueError("Table name must match the key.")
         self._tables[key] = value
-    def __str__(self): return f"Database(tables={list(self._tables.keys())})"
+
+    def __str__(self):
+        return f"Database(tables={list(self._tables.keys())})"
 
     def table(self, name):
         """Creates and returns a new table, or returns an existing one."""
-        if name not in self._tables: self._tables[name] = PyTable(name)
+        if name not in self._tables: self._tables[name] = PyTb(name)
         return self._tables[name]
 
     def save(self, filename, verbose=False):
@@ -84,3 +100,4 @@ class Pydb:
 
     @property
     def tables(self): return list(self._tables.keys())
+
