@@ -19,7 +19,7 @@ PynexDB is a **lightweight**, **easy-to-use**, and **efficient** database built 
 The module is fairly small, making it easy to extend yourself if you wish. This snippet should get you started:
 
 ```python
-import PynexDB.Pynex as Pynex
+from PynexDB import Pynex
 
 ## RECOMMENDED ##
 # Declare Database & Table objects for
