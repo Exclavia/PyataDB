@@ -14,18 +14,18 @@ db_file = 'quickstart_example.db'
 
 I recommend declaring two variables pointing to the actual Pydb and PyTable objects for easier type delcaration and to be able to see type hints.
 ```python
-Database, Table = Pyata.Pydb, Pyata.PyTable
+Database, Table = Pynex.PyDb, Pynex.PyTb
 ```
 Just a recommendation, not required.
 
 
 Let's initialize a new database, and then can create a new table, which we will call 'products':
 ```python
-  db:Database = Pyata.Pydb()
+  db:Database = Pynex.PyDb()
   products:Table = db.table('products')
 ```
 
-Since PyataDB supports dynamic table fields, if we happen to forget to add a field that we wanted to store, it can be added to the table at a later time.
+Since PynexDB supports dynamic table fields, if we happen to forget to add a field that we wanted to store, it can be added to the table at a later time.
 
 
 For now we will just do some common product/item data found in stores:
@@ -35,7 +35,7 @@ For now we will just do some common product/item data found in stores:
   - item_price
 
 > [!NOTE]
-> I personally would not recommend using PyataDB for storing heavily and frequntly accessed data. It has yet to be tested, and it's whole purpose was to be small, lightweight, able to be embedded, and fairly easy to use.
+> I personally would not recommend using PynexDB for storing heavily and frequntly accessed data. It has yet to be tested, and it's whole purpose was to be small, lightweight, able to be embedded, and fairly easy to use.
 
 
 Let's go ahead and add some products using the fields (keys) we specificed above. Beforehand, you will notice I have an ```if not os.path.exists``` statement to check for whether or not the database file for this guide/example was alreadt created and to skip data insertion if that's the case. If your database file doesn't seem to work, seems empty or is corrupted, just go ahead and delete it and run the example again, and it should insert and recreate the database save.
@@ -88,7 +88,7 @@ Proper output:
 ```
 * I cut off the third one to save space.
 
-Now one of the features of PyataDB is the ability to find entries based on their specific key.
+Now one of the features of PynexDB is the ability to find entries based on their specific key.
 
 For example, if we wanted a list of all the stores cell phones, we could filter based on item category, if we wanted a specific item, we could filter by name because all the product names happen to be unique, however this is not always the case. For that purpose we also store the items SKU (Stock Keeping Unit), which will be unique for every item in a store.
 
