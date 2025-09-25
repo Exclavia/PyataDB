@@ -1,6 +1,6 @@
 # Quickstart Guide / Example
 
-### The full [quickstart_example.py](../examples/quickstart_example.py) for this guide
+### The full [quickstart_example.py](../bin/quickstart_example.py) for this guide
 This example/guide shows the user how to easily store data for later loading, as well as how to easily retrieve the data and parse it. 
 
 First let's set a filepath for the database file that will be created, initialize a new database, and create a new table. For the example we will be storing products/items for a store.
