@@ -28,7 +28,7 @@ import PynexDB.Pynex as Pynex
 Database, Table = Pynex.PyDb, Pynex.PyTb
 
 # Initialize new database
-db: Database = Pyata.Pydb()
+db: Database = Pynex.PyDb()
 
 # Create and return a new table in database
 new_table: Table = db.table('new_table')
