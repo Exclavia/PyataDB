@@ -14,7 +14,7 @@ PynexDB is a **lightweight**, **easy-to-use**, and **efficient** database built 
 
 ## Usage
 
-#### See the [Quickstart](docs/quick-start.md) - Full [quickstart_example.py](examples/quickstart_example.py)
+#### See the [Quickstart](docs/quick-start.md) - Full [quickstart_example.py](bin/quickstart_example.py)
 
 The module is fairly small, making it easy to extend yourself if you wish. This snippet should get you started:
 
