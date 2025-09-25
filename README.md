@@ -1,10 +1,10 @@
 # PynexDB: A Lightweight Python Database 
 
-PynexDB is a **lightweight**, **easy-to-use** database built entirely in Python. It's designed for small to medium-sized projects where a full-fledged database system like PostgreSQL or MySQL might be overkill. PynexDB allows you to store and retrieve data easily with only a few lines of code.
+PynexDB is a **lightweight**, **easy-to-use** database built entirely in Python. It's designed for small to medium-sized projects where a full-fledged database system like PostgreSQL or MySQL might be overkill. PynexDB allows you to store and retrieve data easily with only a few lines of code. (See [Usage](#usage))
 
-It only uses the standard Python libraries. It's fairly simple at it's core, making it's easily modifiable. You can save database files and load them again later. Overall, PynexDB, is essentially a dictionary extension/wrapper, using the base container types, and adding easy interfacing methods. 
+PynexDB only uses standard Python libraries, making it fairly simple at its core, this also makes it easily modifiable. It's essentially a dictionary extension/wrapper using standard container types with added interfacing methods and easier file saving/loading.
 
-Best use case would be embedded in projects for an extended data storage. It has not been tested in heavily accessed / frequently changing scenarios.
+Best use case would be embedded in projects for an extended data storage. It has not been tested in heavily accessed environments with frequently changing data. Nor has it been tested in a production environment. Just a little project/tool originally made for personal usage.
 
 
 ## Installation
