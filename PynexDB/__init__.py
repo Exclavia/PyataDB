@@ -8,8 +8,9 @@ import os as __os__
 import sys as __sys__
 
 # pynex module
-from .pynex import *
+from .Pynex import *
+from .Tools import *
 
 
-__all__ = ('PyDb', 'PyTb',)
-__version__ = "0.1.4"
+__all__ = ('PyDb', 'PyTb', 'ItemCount', 'dbJSON')
+__version__ = "0.1.6"
