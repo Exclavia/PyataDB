@@ -10,7 +10,7 @@ Best use case would be embedded in projects for an extended data storage. It has
 ## Installation
 
 ```
-pip install https://github.com/Exclavia/PynexDB/releases/download/Alpha/pynexdb-0.1.4-py3-none-any.whl
+pip install https://github.com/Exclavia/PynexDB/releases/download/Alpha-0.1.6/pynexdb-0.1.6-py3-none-any.whl
 ```
 
 
