@@ -12,5 +12,5 @@ from .Pynex import *
 from .Tools import *
 
 
-__all__ = ('PyDb', 'PyTb', 'ItemCount', 'dbJSON')
+__all__ = ['PyDb', 'PyTb', 'ItemCount', 'dbJSON']
 __version__ = "0.1.6"
