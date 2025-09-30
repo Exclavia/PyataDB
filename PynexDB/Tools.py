@@ -39,7 +39,7 @@ class ItemCount:
 
 
 
-class dbJSON:
+class ToJSON:
     """dbJSON.convert('Database file') -> Convert Database file to JSON file"""
 
     def convert(DB_File:str):
