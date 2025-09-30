@@ -9,7 +9,7 @@ import sys as __sys__
 
 # pynex module
 from .Pynex import (PyDb, PyTb,)
-from .Tools import (ItemCount, dbJSON,)
+from .Tools import (ItemCount, ToJSON,)
 
 
 __all__ = ['PyDb', 'PyTb', 'ItemCount', 'ToJSON']
