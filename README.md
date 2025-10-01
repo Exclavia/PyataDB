@@ -21,7 +21,7 @@ PynexDB is a **lightweight**, **efficient**, and **easy-to-use** database built 
 ## 💾 Installation
 
 ```
-pip install ...
+pip install https://github.com/Exclavia/PynexDB/releases/download/Alpha-2.0.1/pynexdb-2.0.1-py3-none-any.whl
 ```
 
 ```python
