@@ -1,8 +1,7 @@
 # PynexDB 🚀
 
 ![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)
-![License](https://img.shields.io/badge/license-Apache-green.svg)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/your-username/pynexdb)
+![GitHub License](https://img.shields.io/github/license/Exclavia/PynexDB)
 [![Code Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)](https://github.com/your-username/pynexdb)
 
 PynexDB is a lightweight, in-memory, columnar database built with pure Python. It's designed for simplicity, speed, and ease of use in small to medium-sized projects, offering powerful features like indexing, transactions, and advanced querying without the need for external dependencies.
