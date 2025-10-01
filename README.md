@@ -3,15 +3,13 @@
 ![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![GitHub License](https://img.shields.io/github/license/Exclavia/PynexDB)
 
-PynexDB is a lightweight, in-memory, columnar database built with pure Python. It's designed for simplicity, speed, and ease of use in small to medium-sized projects, offering powerful features like indexing, transactions, and advanced querying without the need for external dependencies.
+PynexDB is a **lightweight**, **in-memory**, and **easy-to-use** database built with pure Python. It's designed for simplicity, speed, and ease of use in small to medium-sized projects, offering powerful features like indexing, transactions, and advanced querying without the need for external dependencies.
 
 ---
 
-## ✨ Features
+##  Features
 
 * **In-Memory Speed**: All data is held in memory for blazing-fast read and write operations.
-* **Columnar Storage**: Data is organized by column, leading to efficient queries and memory usage.
-* **Simple API**: An intuitive, Pythonic API that feels natural to use.
 * **Indexing**: Create indexes on columns for near-instantaneous lookups on large datasets.
 * **ACID-like Transactions**: An atomic transaction context manager ensures data integrity. If an operation fails, the entire transaction is rolled back.
 * **Advanced Queries**: Go beyond simple equality with operators for "greater than" (`__gt`), "less than" (`__lt`), "not equal" (`__ne`), and more.
@@ -22,7 +20,9 @@ PynexDB is a lightweight, in-memory, columnar database built with pure Python. I
 
 ## 💾 Installation
 
-Currently, PynexDB is a single-file module. To use it in your project, simply download `Core.py` and place it in your project directory.
+```
+pip install ...
+```
 
 ```python
 from Core import Database
@@ -32,16 +32,19 @@ from Core import Database
 
 ---
 
-## ⚡ Quickstart
+## Quickstart
 
-Here's how to get up and running with PynexDB in under a minute.
 
 ```python
-from Core import Database
+import Pynex
+
+# Recommended for type hints, but not required.
+Database, Table, Transaction = Pynex.Database, Pynex.Table, Pynex.Transaction
+
 
 # 1. Create a database and a table
-db = Database()
-users = db.table('users')
+db:Database = Pynex.Database()
+users:Table = db.table('users')
 
 # 2. Insert some data
 users.insert(id=1, name='Alice', age=30, city='New York')
@@ -85,7 +88,7 @@ print(new_db['users'])
 
 ---
 
-## 📖 API Reference
+## Reference
 
 ### `Database` Class
 
@@ -143,53 +146,6 @@ Creates a hash index on a column to make equality-based lookups (`find(column='v
 
 #### `table.compact()`
 Permanently removes all soft-deleted rows from the table to reclaim space. This is a disk-intensive operation and should be run periodically.
-
----
-
-## 🎓 Advanced Usage
-
-### Schema Enforcement
-Define a schema to ensure data consistency. PynexDB will raise a `TypeError` if you try to insert or update data with the wrong type.
-
-```python
-# Only allows integers for 'id' and strings for 'name'
-products = db.table('products', schema={'id': int, 'name': str, 'price': float})
-
-products.insert(id=101, name='Laptop', price=1200.50) # OK
-
-try:
-    products.insert(id=102, name='Mouse', price='25.00') # Fails
-except TypeError as e:
-    print(e)
-```
-
-### Transactions
-Use transactions to guarantee that a series of operations is atomic. This is crucial for maintaining a valid state.
-
-```python
-try:
-    with db.transaction():
-        # A valid update
-        db['products'].update(query={'id': 101}, new_values={'price': 1150.00})
-        
-        # This insert will fail the schema check
-        db['products'].insert(id=103, name='Keyboard', price='invalid')
-
-except TypeError:
-    print("Transaction failed and was rolled back.")
-
-# The price of the laptop will be rolled back to 1200.50
-product = db['products'].find(id=101)
-print(product[0]['price']) # Output: 1200.5
-```
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
----
 
 ## 📜 License
 
