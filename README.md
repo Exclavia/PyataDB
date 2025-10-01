@@ -147,6 +147,4 @@ Creates a hash index on a column to make equality-based lookups (`find(column='v
 #### `table.compact()`
 Permanently removes all soft-deleted rows from the table to reclaim space. This is a disk-intensive operation and should be run periodically.
 
-## 📜 License
-
-This project is licensed under the MIT License.
+---
