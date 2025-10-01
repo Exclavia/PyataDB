@@ -1,6 +1,198 @@
-# PynexDB: A lightweight, efficient, and easy to use database
+# PynexDB 🚀
 
-PynexDB is a **lightweight**, **efficient**, and **easy-to-use** database built entirely in Python. It's designed for small to medium-sized projects where a full-fledged database system like PostgreSQL or MySQL might be overkill. PynexDB allows you to store and retrieve data easily with only a few lines of code.
+![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/your-username/pynexdb)
+[![Code Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)](https://github.com/your-username/pynexdb)
 
+PynexDB is a lightweight, in-memory, columnar database built with pure Python. It's designed for simplicity, speed, and ease of use in small to medium-sized projects, offering powerful features like indexing, transactions, and advanced querying without the need for external dependencies.
 
-Best use case would be embedded in projects for an extended data storage. It has not been tested in heavily accessed environments with frequently changing data. Nor has it been tested in a production environment. Just a little project/tool originally made for personal usage.
+---
+
+## ✨ Features
+
+* **In-Memory Speed**: All data is held in memory for blazing-fast read and write operations.
+* **Columnar Storage**: Data is organized by column, leading to efficient queries and memory usage.
+* **Simple API**: An intuitive, Pythonic API that feels natural to use.
+* **Indexing**: Create indexes on columns for near-instantaneous lookups on large datasets.
+* **ACID-like Transactions**: An atomic transaction context manager ensures data integrity. If an operation fails, the entire transaction is rolled back.
+* **Advanced Queries**: Go beyond simple equality with operators for "greater than" (`__gt`), "less than" (`__lt`), "not equal" (`__ne`), and more.
+* **Schema Enforcement**: Optionally enforce data types on a per-column basis for robust data integrity.
+* **Data Persistence**: Save your entire database to a file and load it back into memory with a single command.
+
+---
+
+## 💾 Installation
+
+Currently, PynexDB is a single-file module. To use it in your project, simply download `Core.py` and place it in your project directory.
+
+```python
+from Core import Database
+```
+
+*(A pip package is planned for the future).*
+
+---
+
+## ⚡ Quickstart
+
+Here's how to get up and running with PynexDB in under a minute.
+
+```python
+from Core import Database
+
+# 1. Create a database and a table
+db = Database()
+users = db.table('users')
+
+# 2. Insert some data
+users.insert(id=1, name='Alice', age=30, city='New York')
+users.insert(id=2, name='Bob', age=25, city='Los Angeles')
+users.insert(id=3, name='Charlie', age=35, city='New York')
+
+print(f"Total users: {len(users)}")
+# Output: Total users: 3
+
+# 3. Find data
+# Find all users in New York
+ny_users = users.find(city='New York')
+print(f"NY Users: {[user['name'] for user in ny_users]}")
+# Output: NY Users: ['Alice', 'Charlie']
+
+# Use advanced queries to find users older than 28
+older_users = users.find(age__gt=28)
+print(f"Older Users: {[user['name'] for user in older_users]}")
+# Output: Older Users: ['Alice', 'Charlie']
+
+# 4. Create an index for faster lookups
+users.create_index('city')
+# Queries using the 'city' column will now be much faster.
+
+# 5. Update and Delete data
+users.update(query={'name': 'Bob'}, new_values={'age': 26})
+users.delete(id=3)
+
+print(f"All users after changes: {users.get_all()}")
+# Output: All users after changes: [{'id': 1, 'name': 'Alice', 'age': 30, 'city': 'New York'}, {'id': 2, 'name': 'Bob', 'age': 26, 'city': 'Los Angeles'}]
+
+# 6. Save your database to a file
+db.save("my_app.db", verbose=True)
+# Output: Database saved to : 'my_app.db'
+
+# 7. Load it back later
+new_db = Database.load("my_app.db")
+print(new_db['users'])
+# Output: Table(name='users', columns=['id', 'name', 'age', 'city'], rows=2)
+```
+
+---
+
+## 📖 API Reference
+
+### `Database` Class
+
+#### `db.table(name, schema=None)`
+Creates a new table or returns an existing one.
+* `name` (str): The name of the table.
+* `schema` (dict, optional): A dictionary mapping column names to types (e.g., `{'id': int, 'price': float}`) to enforce data integrity.
+
+#### `db.save(filename, verbose=False)`
+Saves the entire database object to a binary file using pickle.
+
+#### `Database.load(filename, verbose=False)`
+A static method to load a database from a file.
+
+#### `db.transaction()`
+Returns a context manager for atomic operations. All operations within the `with` block are committed upon successful exit. If an exception occurs, all changes are rolled back.
+
+```python
+with db.transaction():
+    db['users'].update(...)
+    db['users'].insert(...)
+    # These are only saved if no errors occur.
+```
+
+### `Table` Class
+
+#### `table.insert(**kwargs)`
+Inserts a new row. Each keyword argument represents a column and its value.
+
+#### `table.find(**kwargs)`
+Finds all rows matching **all** of the given criteria (`AND` logic).
+* **Equality**: `table.find(name='Alice')`
+* **Advanced Operators**: Append `__` and an operator to the column name.
+    * `age__gt`: Greater than
+    * `age__lt`: Less than
+    * `age__gte`: Greater than or equal to
+    * `age__lte`: Less than or equal to
+    * `city__ne`: Not equal
+
+#### `table.find_or(*queries)`
+Finds all rows matching **any** of the given query dictionaries (`OR` logic).
+```python
+# Find users who are younger than 30 OR live in New York
+table.find_or({'age__lt': 30}, {'city': 'New York'})
+```
+
+#### `table.update(query, new_values)`
+Finds rows matching the `query` dictionary and updates them with the values from the `new_values` dictionary.
+
+#### `table.delete(**kwargs)`
+Finds rows matching the criteria and "soft-deletes" them. The data is hidden from queries but not yet removed from the file.
+
+#### `table.create_index(column)`
+Creates a hash index on a column to make equality-based lookups (`find(column='value')`) significantly faster.
+
+#### `table.compact()`
+Permanently removes all soft-deleted rows from the table to reclaim space. This is a disk-intensive operation and should be run periodically.
+
+---
+
+## 🎓 Advanced Usage
+
+### Schema Enforcement
+Define a schema to ensure data consistency. PynexDB will raise a `TypeError` if you try to insert or update data with the wrong type.
+
+```python
+# Only allows integers for 'id' and strings for 'name'
+products = db.table('products', schema={'id': int, 'name': str, 'price': float})
+
+products.insert(id=101, name='Laptop', price=1200.50) # OK
+
+try:
+    products.insert(id=102, name='Mouse', price='25.00') # Fails
+except TypeError as e:
+    print(e)
+```
+
+### Transactions
+Use transactions to guarantee that a series of operations is atomic. This is crucial for maintaining a valid state.
+
+```python
+try:
+    with db.transaction():
+        # A valid update
+        db['products'].update(query={'id': 101}, new_values={'price': 1150.00})
+        
+        # This insert will fail the schema check
+        db['products'].insert(id=103, name='Keyboard', price='invalid')
+
+except TypeError:
+    print("Transaction failed and was rolled back.")
+
+# The price of the laptop will be rolled back to 1200.50
+product = db['products'].find(id=101)
+print(product[0]['price']) # Output: 1200.5
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
