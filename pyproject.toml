@@ -1,6 +1,6 @@
 [project]
 name = "PynexDB"
-version = 2.0.1"
+version = "2.0.1"
 authors = [
   { name="Exclavia", email="git@exclavia.network" },
 ]
@@ -10,4 +10,5 @@ description = "PynexDB is a lightweight, efficient, and easy-to-use, and effi
 requires = ["setuptools>=61.0"]
 
 build-backend = "setuptools.build_meta"
+
 
