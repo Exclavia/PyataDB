@@ -1,4 +1,4 @@
-# PynexDB 🚀
+# PynexDB
 
 ![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![GitHub License](https://img.shields.io/github/license/Exclavia/PynexDB)
