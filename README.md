@@ -2,7 +2,8 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![GitHub License](https://img.shields.io/github/license/Exclavia/PynexDB)
-![GitHub Tag](https://img.shields.io/github/v/tag/Exclavia/PynexDB)
+![GitHub Tag](https://img.shields.io/github/v/tag/Exclavia/PynexDB?link=https%3A%2F%2Fgithub.com%2FExclavia%2FPynexDB%2Freleases%2Ftag%2FAlpha-2.0.1)
+
 
 
 PynexDB is a **lightweight**, **efficient**, and **easy-to-use** database built with pure Python. It's designed for simplicity, speed, and ease of use in small to medium-sized projects, offering powerful features like indexing, transactions, and advanced querying, while maintaining a fairly small and easily embeddable footprint.
