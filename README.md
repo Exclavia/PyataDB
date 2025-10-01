@@ -25,7 +25,7 @@ pip install ...
 ```
 
 ```python
-from Core import Database
+import Pynex
 ```
 
 *(A pip package is planned for the future).*
